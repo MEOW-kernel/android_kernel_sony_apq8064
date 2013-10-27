@@ -1947,6 +1947,7 @@ static int synaptics_clearpad_handle_gesture(struct synaptics_clearpad *this)
 		{ 	
 		    in_prog=1;
    		    dt2w_func();
+            synaptics_clearpad_reset_power(this);
 		}
 		#endif 
 
@@ -1961,8 +1962,9 @@ static int synaptics_clearpad_handle_gesture(struct synaptics_clearpad *this)
 		#ifdef CONFIG_TOUCHSCREEN_SWEEP2WAKE
 		if(s2w_switch == 1 && in_prog==0)
 		{
-		     in_prog=1;
-   		     dt2w_func();
+            in_prog=1;
+            dt2w_func();
+            synaptics_clearpad_reset_power(this);
 		}
 		#endif
 
